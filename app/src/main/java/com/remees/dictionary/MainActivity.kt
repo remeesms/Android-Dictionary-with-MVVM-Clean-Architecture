@@ -32,11 +32,13 @@ import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.lifecycleScope
 import com.remees.dictionary.feature_dictionary.presentation.WordInfoItem
 import com.remees.dictionary.feature_dictionary.presentation.WordInfoViewModel
 import com.remees.dictionary.ui.theme.DictionaryTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -48,7 +50,6 @@ class MainActivity : ComponentActivity() {
                 val viewModel: WordInfoViewModel = hiltViewModel()
                 val state = viewModel.state.value
                 val snackbarHostState = remember { SnackbarHostState() }
-
 
                 LaunchedEffect(key1 = true) {
                     viewModel.eventFlow.collectLatest { event ->
@@ -110,21 +111,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DictionaryTheme {
-        Greeting("Android")
     }
 }
