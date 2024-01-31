@@ -1,5 +1,6 @@
 package com.remees.dictionary.ui.theme
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -37,6 +38,7 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+@SuppressLint("ObsoleteSdkInt")
 @Composable
 fun DictionaryTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
